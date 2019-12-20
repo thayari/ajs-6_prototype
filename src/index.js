@@ -1,2 +1,1 @@
 import Character from './app';
-

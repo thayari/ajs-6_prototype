@@ -7,8 +7,11 @@ export default function Character(name, type) {
 }
 
 Character.prototype.damage = function (points) {
-  if (isNaN(points)) {
+  if (typeof points !== 'number') {
     throw new Error('Damage points must be a number');
   }
   this.health -= points * (1 - this.defence / 100);
-}
+  if (this.health < 0) {
+    this.health = 0;
+  }
+};

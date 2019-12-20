@@ -8,5 +8,11 @@ test('damage inflicted', () => {
 
 test('incorrect data error', () => {
   const strange = new Character('Strange', 'Magician');
-  expect(() => strange.damage('qwerty')).toThrow('Damage points must be a number');
+  expect(() => { strange.damage('qwerty'); }).toThrow('Damage points must be a number');
+});
+
+test('character is dead', () => {
+  const strange = new Character('Strange', 'Magician');
+  strange.damage(500);
+  expect(strange.health).toBe(0);
 });
